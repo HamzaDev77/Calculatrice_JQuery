@@ -34,23 +34,23 @@ $(document).ready(function()
             var res=$('#res');
             res.text(a+"  OP  "+b);
             $('#plus').click(function(){
-                c =a+" + "+b+" = "+add(a,b);
+                c =a+" + "+b+" = "+add(a,b).toFixed(3);
                 res.text(c).css("color",'#cd7f32');
             });
             $('#min').click(function(){
-                c= a+" - "+b+" = "+soustr(a,b);
+                c= a+" - "+b+" = "+soustr(a,b).toFixed(3);
                 res.text(c).css("color",'#cd7f32');;
             });
             $('#mul').click(function(){
-                c= a+" x "+b+" = "+mult(a,b);
+                c= a+" x "+b+" = "+mult(a,b).toFixed(3);
                 res.text(c).css("color",'#cd7f32');;
             });
             $('#div').click(function(){
-                c= a+" / "+b+" = "+divi(a,b);
+                c= a+" / "+b+" = "+divi(a,b).toFixed(3);
                 res.text(c).css("color",'#cd7f32');;
             });
             $('#mod').click(function(){
-                c= a+" % "+b+" = "+modu(a,b);
+                c= a+" % "+b+" = "+modu(a,b).toFixed(3);
                 res.text(c).css("color",'#cd7f32');;
             }); 
             // $('#sve').click(function()
