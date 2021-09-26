@@ -1,17 +1,25 @@
 //---------------------------------JQUERY SCRIPT----------------------//
 $(document).ready(function()
 {
-    $('.lorem').hide(function ()
+    $('.lorem,.quad_arth').hide(function ()
         {
             $(".i").addClass("fa-plus");
         });
     $(".a").click(function ()
         {
-            
             $('.lorem').toggle();
-            
-            $(".i").toggleClass("fa-minus");
-            $("pre").prop('hidden',false);
+            $(".a>.i").toggleClass("fa-minus");
+            $(".lorem").prop('hidden',false);
+            $('.quad_arth').hide();
+            $(".b>.i").removeClass("fa-minus");
+        });
+    $(".b").click(function ()
+        {
+            $('.quad_arth').toggle();
+            $(".b>.i").toggleClass("fa-minus");
+            $(".quad_arth").prop('hidden',false);
+            $('.lorem').hide();
+            $(".a>.i").removeClass("fa-minus");
         });
             
     $('.lorem').click(function(){
@@ -69,11 +77,13 @@ $(document).ready(function()
                 .removeAttr('selected');
                 c=a=b=0;
                 res.text('');
-            });
-           
+            }); 
         });
-   
-});
+        $("#sve_1").click(function(){
+            quadratic();
+        });
+    });
+
 //---------------------------------                  ----------------------//
 //---------------------------------CALCULATING FUNCTS----------------------//
 function add(a,b) {
@@ -94,3 +104,43 @@ function modu(a,b){
     return a%b;
     }
 //---------------------------------                 ----------------------//
+//--------------------------------- Quadratic function--------------------//
+//            programme de résolution de la fonction quadratique
+                
+    quadratic = () =>
+            { 
+                $ = (id) => document.getElementById(id);    
+                f =  $("x").value;
+                g =  $("y").value;
+                h =  $("z").value;
+                let delta = g * g - 4 * f * h;
+            if (delta > 0) 
+            {
+            var s1 = (-g + Math.sqrt(delta)) / (2 * f);
+            var s2 = (-g - Math.sqrt(delta)) / (2 * f);
+            // resultat
+            $("resultat").innerHTML = s1.toFixed(2) +' et '+ s2.toFixed(2);
+            $("delta").innerHTML = delta;
+                }
+
+            else if (delta == 0) 
+            {
+                s1 = s2 = -g / (2 * f);
+                $("resultat").innerHTML = s1.toFixed(2) ;
+                $("delta").innerHTML = delta;
+            }
+
+            else {
+                var r = (-g / (2 * f)).toFixed(2);
+                var i = (Math.sqrt(-delta) / (2 * f)).toFixed(2);
+                // resultat
+                $("resultat").innerHTML = `les racines de cette equation sont : ${r} + ${i}i et ${r} - ${i}i`;
+                $("delta").innerHTML = delta;
+            }
+
+            $("a").innerHTML = f;
+            $("b").innerHTML = g;
+            $("c").innerHTML = h;
+            }
+
+    refresh = () => location.reload();

@@ -34,7 +34,6 @@
             display: block;
             align-content:center;
             align-items:center;
-            width: 100%;
             height: 40px;
             padding: 6px 12px;
             font-size: 20px;
@@ -50,13 +49,25 @@
         .form-control:hover::placeholder{
             color:lightgray;
         }
-        #ref,#sve{
+        #ref,#sve,#ref_1,#sve_1{
             background: linear-gradient(#bb6528, #cd7f32);
             color:white;
         }
-        #ref:hover,#sve:hover{
+        #ref:hover,#sve:hover,#ref_1:hover,#sve_1:hover{
             background: linear-gradient(#cd7f32,#bb6528 );
             color:beige;
+        }
+        .quad_arth>.form-control, .quad_arth>.form-control:active, .quad_arth>.form-control:focus
+        {
+                width:auto;
+                height:auto;
+                background:#000;
+        }
+        p.lead{
+            color:darkgreen;
+            font-size : 20px;
+            font-family : 'system-ui';
+            margin-left : 33%;
         }
     </style>
 </head>
@@ -65,10 +76,12 @@
            <i id="stat">
              CALCULETTA 
            </i> <a class="btn btn-default a"> <i class="i fa fa-plus"></i></a>
+           <i id="stat">
+             QUADRATIC FUNCTION  
+           </i><a class="btn btn-default b"> <i class="i fa fa-plus"></i></a>
         </div>
         
-        <div class="lorem text-center">
-            <pre hidden>
+        <div hidden class="jumbotron jumbotron-fluid lorem text-center">
                 <table class="d-flex justify-content-center table table-borderless">
                     <tr>
                             <th class="border float-right">A</th>
@@ -97,17 +110,52 @@
                     <td></td>
                         <th class="col-lg-1 text-center">Result</th>    
                     </tr>
-                    
                 </table> 
-            </pre> 
+                <legend  id="res"></legend>  
+                <div class="d-flex justify-content-center">
+                <button  id="ref" class="col-lg-1 btn btn-default ">C</button>
+                <button  id="sve" class="col-lg-1 btn btn-default ">Save</button>
+                </div>
         </div>
-        <div class="col-lg-12 text-center">
-        <legend  id="res"></legend>    
-        <button  id="ref" class="btn btn-default text-center">C</button>
-        <button  id="sve" class="btn btn-default text-center">Save</button>
-        </div>
+       
         <!-- <div id="get">
         
         </div> -->
+  
+        <div hidden class="jumbotron jumbotron-fluid quad_arth">
+           <div class="container">
+               <div class="display-4 d-flex justify-content-center">
+            <pre id="a">a</pre>X<h4>2</h4> + <pre id="b">b</pre>X + <pre id="c">c</pre> = 0
+            </div>
+            <br>
+                <hr class="my-2">
+               <p class="lead">où a, b et c sont des nombres réels et a ≠ 0</p><br>
+              
+                    <form class="form-inline" method="post">
+                        <input   type="number"  class="form-control"  name="x" value="" id="x" placeholder="a" />
+                            <div class="display-4 d-flex justify-content-center">
+                            X<h4>2</h4>+ 
+                            </div>
+                        <input  type="number"  class="form-control" name="y" value="" id="y" placeholder="b"  />
+                            <div class="display-4 d-flex justify-content-center">
+                            X+
+                            </div>
+                        <input type="number" class="form-control" name="z" value="" id="z" placeholder="c" /> 
+                        <div class="display-4 d-flex justify-content-center">
+                            =0
+                            </div>
+                        <div class="mb-4 d-flex flex-column justify-content-center">
+                            <legend id="resultat" > Result :  </legend>
+                            <legend id="delta" > Delta =   </legend>
+                            <br><br><br><div class="container float-right">
+                            <input type="button" class="btn btn-default col-xs-1" id="sve_1"  value="Calculer" >
+                            <input type="button" class="btn btn-default col-xs-1"  id="ref_1" onclick="refresh()" value="Actualiser" >
+                        </div>
+                            </div>
+                       
+                    </form>
+           </div>
+       </div>
+      
     </body>
 </html>
